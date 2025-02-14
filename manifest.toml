@@ -1,0 +1,11 @@
+# manifest.toml
+name = "bootstrap-autocomplete"
+version = "0.1.0"
+authors = ["Original: Jack Cherng, Ported by: Michael Fabing"]
+description = "Bootstrap class name autocompletion for Zed"
+
+[activations]
+workspace_contains = ["*.html", "*.htm"]
+
+[languages.html]
+scope-selector = ["text.html"]

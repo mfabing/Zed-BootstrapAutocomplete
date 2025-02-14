@@ -1,0 +1,74 @@
+{
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": ["/BootstrapAutocomplete/completion-db.json", "/ST-BootstrapAutocomplete/completion-db.json"],
+        "schema": {
+          "allowComments": true,
+          "allowTrailingCommas": true
+        }
+      },
+      {
+        "file_patterns": ["/BootstrapAutocomplete.sublime-settings"],
+        "schema": {
+          "$id": "sublime://settings/BootstrapAutocomplete",
+          "definitions": {
+            "plugin_config": {
+              "properties": {
+                "selectors": {
+                  "description": "Scopes that this plugin should activated.",
+                  "type": "array",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "default": ["text.html string.quoted - meta.path", "text.html meta.attribute-with-value.class"]
+                },
+                "versions": {
+                  "description": "Targeted Bootstrap versions.",
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": ["2", "3", "4", "5"]
+                      }
+                    }
+                  ],
+                  "default": ["4"]
+                }
+              }
+            }
+          },
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "sublime://settings/BootstrapAutocomplete#/definitions/plugin_config"
+            }
+          ]
+        }
+      },
+      {
+        "file_patterns": ["/*.sublime-project"],
+        "schema": {
+          "properties": {
+            "settings": {
+              "properties": {
+                "BootstrapAutocomplete": {
+                  "$ref": "sublime://settings/BootstrapAutocomplete#/definitions/plugin_config"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
